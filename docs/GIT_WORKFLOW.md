@@ -1,55 +1,54 @@
-# Git Workflow
+# Git Workflow (solo)
+
+Git is your undo button and your save history. The aim is that `main` always runs.
 
 ## Branches
 
-- `main`: what's published to Roblox. Only updated from `develop` at a milestone. Protected.
-- `develop`: integration branch. Everyone's PRs go here. Should always run.
-- `feature/<area>-<thing>`: your work. Area is `server`, `client`, or `world`.
-  e.g. `feature/server-safe-loot`, `feature/client-suspicion-meter`, `feature/world-npc-idles`.
-- `contract/<thing>`: changes to `src/shared/` or `docs/CONTRACTS.md`. All three review.
-
-## One-time GitHub setup (repo owner)
-
-1. Settings → Collaborators: add your two teammates.
-2. Settings → Branches → add protection rules for `main` and `develop`:
-   require a pull request, 1 approval, and the `CI / lint` check passing.
-3. Edit `.github/CODEOWNERS` and replace `@DEV1/@DEV2/@DEV3` with your usernames.
+- `main`: always playable. Small fixes can go straight here.
+- `feature/<thing>`: for anything that takes more than one sitting or might break the game
+  (e.g. `feature/hitscan`, `feature/decoy-gadget`). Merge into `main` when it works in a playtest.
 
 ## Daily loop
 
 ```bash
-git checkout develop
-git pull origin develop
-git checkout -b feature/server-door-sounds
+git checkout main
+git pull
+
+# for a bigger change:
+git checkout -b feature/door-sounds
 
 # ... work, with `rojo serve` running and Studio connected ...
 
 stylua src && selene src
 git add -A
-git commit -m "server: play sound when clearance door opens"
-git push -u origin feature/server-door-sounds
-# open a PR into develop on GitHub; fill in the template
+git commit -m "Play sound when clearance doors open"
+git push -u origin feature/door-sounds
 ```
 
-Keep PRs small: one idea, ideally under ~300 lines. Small PRs get reviewed the same day.
-
-## When develop moved while you were working
+When it works in Studio:
 
 ```bash
-git fetch origin
-git rebase origin/develop
-# fix conflicts if any, then:
-git push --force-with-lease
+git checkout main
+git merge feature/door-sounds
+git push
+git branch -d feature/door-sounds
 ```
+
+Commit every time something works, even small things. That gives you more points to roll back to.
+
+## Optional GitHub setting
+
+Settings → Branches → add a rule for `main` that requires the `CI / lint` check to pass. This stops you from
+merging code that doesn't parse. You can still push directly; open a PR from a feature branch when you want CI to check it first.
 
 ## The map file
 
-Scripts are text and merge cleanly. The `.rbxl` place file doesn't, which is why it's gitignored.
-- Keep the map in **Team Create** on the team's Roblox group place.
-- At each milestone, Dev 3 exports a backup (File → Save to File) and attaches it to a GitHub Release.
+Scripts are text and diff cleanly. The `.rbxl` place file doesn't, which is why it's gitignored.
+- Publish the place to Roblox often. Roblox keeps version history (Game Settings → Places → Version History).
+- At each milestone, also File → Save to File and attach the `.rbxl` to a GitHub Release as a backup.
 
 ## Publishing
 
-1. Merge `develop` → `main` via PR at the end of a milestone.
-2. Pull `main`, `rojo serve`, sync into the Team Create place, Playtest, then File → Publish to Roblox.
+1. Make sure `main` is in a good state and pushed.
+2. `rojo serve`, sync into your place, Playtest, then File → Publish to Roblox.
 3. Tag it: `git tag v0.1.0 && git push origin v0.1.0`.

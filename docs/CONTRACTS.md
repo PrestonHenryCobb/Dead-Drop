@@ -1,6 +1,22 @@
 # Contracts
 
-Everything here is shared. Change it only in a dedicated PR that all three devs approve.
+The interfaces between server code, client code and the map. Keeping them in one place means you can build
+the map and the code on different days without forgetting how they connect, and Claude Code can read this one
+file to stay consistent. Update it in the same commit whenever one of these changes.
+
+## How the pieces connect
+
+| You place in Studio… | …the server code picks it up |
+|---|---|
+| Model tagged `CrowdNPC`, attribute `Tier = 2` | `CoverService` adds a "Copy Disguise" prompt that gives tier 2 |
+| Part tagged `Safe`, attribute `Tier = 3` | `ClearanceService` makes it crackable with a Technician keycard |
+| Part tagged `IntelTerminal` | `MatchService` makes it hackable for intel |
+
+| The server sends… | …the client shows it |
+|---|---|
+| `StateChanged(state)` | HUD reads `state.Suspicion`, `state.Keycards`, `state.Upgrades` |
+| `PhaseChanged(phase, endsAt)` | Timer, lobby menu visibility |
+| `Notify(text)`, `CarrierPing(pos)` | Toasts and the package marker |
 
 ## Remotes (`src/shared/Net.luau`)
 
@@ -52,7 +68,7 @@ Add tags in Studio with **View → Tags**. Set attributes in the Properties pane
 The lobby is just a normal `SpawnLocation` placed in the lobby room. Dead players and post-round
 respawns land there automatically.
 
-## Day-one greybox test map (Dev 3, ~1 hour)
+## Day-one greybox test map (~1 hour)
 
 1. Baseplate. A `SpawnLocation` in a walled lobby room off to one side.
 2. Three `InsertionPoint`s in the main hall, plus 5 `CrowdNPC`s (`Tier 0`) and 4 `WanderNode`s (`Tier 0`).

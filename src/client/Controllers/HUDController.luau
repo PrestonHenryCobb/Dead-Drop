@@ -1,5 +1,5 @@
 --!strict
--- OWNER: Dev 2. Placeholder HUD built in code so the game is playable on day one.
+-- Placeholder HUD built in code so the game is playable on day one.
 -- Replace with designed UI whenever you like; keep reading from StateController.
 
 local Players = game:GetService("Players")

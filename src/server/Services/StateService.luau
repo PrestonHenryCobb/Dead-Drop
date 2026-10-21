@@ -1,5 +1,5 @@
 --!strict
--- OWNER: Dev 1. The single source of truth for per-player data.
+-- The single source of truth for per-player data.
 -- Nobody else writes player data directly: call StateService.update(player, function(state) ... end).
 
 local Players = game:GetService("Players")

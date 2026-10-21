@@ -1,5 +1,5 @@
 --!strict
--- OWNER: Dev 1. Disguises and suspicion.
+-- Disguises and suspicion.
 --
 -- Agents copy a crowd NPC's look with a ProximityPrompt. The server watches how they move
 -- (replicated physics, so exploiters can't just skip a "BreakCover" call) and raises

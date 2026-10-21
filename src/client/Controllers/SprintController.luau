@@ -1,5 +1,5 @@
 --!strict
--- OWNER: Dev 2. Hold Shift to sprint.
+-- Hold Shift to sprint.
 -- Sprinting while disguised is allowed, but the server sees the speed and raises Suspicion.
 
 local ContextActionService = game:GetService("ContextActionService")

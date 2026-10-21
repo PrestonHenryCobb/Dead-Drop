@@ -1,5 +1,5 @@
 --!strict
--- OWNER: Dev 2. Placeholder lobby menu: pick a class, toggle ready.
+-- Placeholder lobby menu: pick a class, toggle ready.
 -- Shown only during the Lobby phase. Reads the class list from Config/Classes, so new classes appear automatically.
 
 local Players = game:GetService("Players")

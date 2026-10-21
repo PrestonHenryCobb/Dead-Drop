@@ -1,24 +1,51 @@
-# Roadmap: 12 weeks to a playable alpha
+# Roadmap (solo)
 
-Alpha = one map, 4 classes, full loop, 8 players, stable. Assumes ~10–15 hrs/week each.
-Weeks 1–2 run faster because the skeleton in this repo already exists.
+A three-person team needs about 12 weeks for the alpha. Solo that's roughly **6–8 months at 10–15 hrs/week**,
+or about half that full-time. Claude Code speeds up the scripting a lot. It doesn't speed up building the map,
+playtesting, or tuning how things feel, and that's where solo time goes.
 
-| Weeks | Dev 1: Server | Dev 2: Client | Dev 3: World | Checkpoint |
-|---|---|---|---|---|
-| 1–2 | Read and own the skeleton. Fix bugs found in first playtests. | Tools set up. Sprint/HUD working. Start UI mockups. | Greybox test map (see CONTRACTS). First 10 NPC looks. | **Full round played solo and 2-player** |
-| 3–4 | Harden validation. Tracker passive. Technocrat door hack. | Real lobby UI with class cards. Suspicion meter with feedback. | Greybox full-size map, all tiers, multiple routes. | **3-person playtest on real layout** |
-| 5–6 | `Fire` remote + server hitscan (pair with Dev 2). Health/armor. | Weapons: client input, recoil, hit markers. | NPC idle animations. Guards patrol tiers. | **Combat feels okay** |
-| 7–8 | Gadget server logic (shield HP, decoy NPC, camera marks). | Four gadgets: placement, UI, cooldowns. | Art pass, floor 1. Lighting. | **All 4 classes playable** |
-| 9–10 | Upgrade effects complete. Anti-exploit pass. | Upgrade/keycard inventory UI. Extraction visuals. | Art pass, remaining floors. Lobby room. Mobile perf check. | **Feature complete** |
-| 11–12 | Bug fixing, balance numbers in Config. | Polish: sounds, juice, settings, mobile controls. | Polish, perf, final NPC count. | **Alpha: public test with friends** |
+So the plan is **sequential milestones, each ending in something playable**, with the scope cut hard for the
+first public test.
 
-## After alpha
-- DataStore: XP, class unlocks, cosmetics
-- Separate lobby place + MemoryStoreService matchmaking + reserved servers
+## Milestone 1: The loop works (weeks 1–3)
+- Build the greybox test map from `docs/CONTRACTS.md`.
+- Play full rounds solo (`MinPlayers = 1`) and with 2 local test clients. Fix whatever breaks.
+- Tune suspicion numbers until blending in feels fair.
+- **Done when:** a 2-player test round goes lobby → extraction with no errors in Output.
+
+## Milestone 2: It's a fight (weeks 4–8)
+- `Fire` remote + server hitscan in `CombatService`; client input, hit markers, health.
+- One weapon per class (reuse one weapon script with different stats).
+- Real lobby UI with class cards; better suspicion meter.
+- **Done when:** a friend can join and you'd both play a second round.
+
+## Milestone 3: Classes are distinct (weeks 9–14)
+- Build the four gadgets one at a time: Scanner (easiest) → Holoshield → Decoy → Camera (hardest).
+- Class passives (Tracker terminal reveal, Technocrat door hack are partly wired already).
+- Remaining upgrade effects (Quick Hands, Spare Gadget, Overclock).
+- **Done when:** all 4 classes are playable and feel different.
+
+## Milestone 4: A real map (weeks 15–22)
+- Full-size greybox first, all tiers, 2–3 routes into every high-tier room. Playtest it *before* any art.
+- NPC idle animations, guards patrolling their tier, 20–30 NPCs total.
+- Art pass, lighting, sound. Lobby room.
+- Check performance on a phone early.
+- **Done when:** the map looks like a place, not a test level.
+
+## Milestone 5: Alpha (weeks 23–28)
+- Bug fixing, balance, game feel (sounds, screen shake, cover-blown effects), mobile controls.
+- Public test with friends / a small Discord.
+
+## Cut from the first release (add later)
+- DataStore progression (XP, unlocks, cosmetics)
+- Separate lobby place + cross-server matchmaking
 - Classes 5 and 6, a second map
-- NPCs that react (flee, alert guards) when an agent blows cover
+- NPCs that react to exposed agents
 
-## Honest risks
-- **Combat feel** is the hardest thing to get right on Roblox (latency). Start it by week 5 and don't let it slip.
-- **NPC count vs. performance.** 30+ pathfinding NPCs is fine on PC but test on a phone early.
-- **Scope creep.** New classes and gadgets are fun to design. Don't add any until the alpha checkpoint.
+## Solo tips
+- **Map is the biggest solo time cost.** Use free Toolbox / Creator Store models for the greybox and
+  first art pass. Swap in your own later, or commission pieces.
+- **Playtesting needs other people.** Find 2–3 friends for a fixed weekly session from Milestone 2 on.
+  Studio's multi-client test only goes so far.
+- **One system at a time.** Finish and playtest each before starting the next; half-done systems pile up fast.
+- **Don't add classes or gadgets** until Milestone 5 is out, no matter how good the idea is.

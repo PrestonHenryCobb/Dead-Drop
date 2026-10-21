@@ -1,5 +1,5 @@
 --!strict
--- OWNER: Dev 2. Mirrors the server's view of this player and the match phase.
+-- Mirrors the server's view of this player and the match phase.
 -- Other controllers read from here instead of listening to remotes themselves.
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")

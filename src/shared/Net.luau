@@ -1,7 +1,7 @@
 --!strict
 -- The one place RemoteEvents are named and created.
--- The server calls Net.init() once at startup; everyone else calls Net.event(name).
--- Adding or renaming an event is a contract change: update docs/CONTRACTS.md in the same PR.
+-- The server calls Net.init() once at startup; all other code calls Net.event(name).
+-- When adding or renaming an event, update docs/CONTRACTS.md in the same commit.
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")

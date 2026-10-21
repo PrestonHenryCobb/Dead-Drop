@@ -1,5 +1,5 @@
 --!strict
--- Shared type definitions. Changing anything here is a contract change: all three devs review it.
+-- Shared type definitions used by both server and client. Update docs/CONTRACTS.md when they change.
 
 export type MatchPhase = "Lobby" | "Insertion" | "Infiltration" | "Extraction" | "PostRound"
 

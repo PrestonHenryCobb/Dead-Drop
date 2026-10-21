@@ -1,5 +1,5 @@
 --!strict
--- OWNER: Dev 1. Clearance tiers, keycards, doors and upgrade safes.
+-- Clearance tiers, keycards, doors and upgrade safes.
 --
 -- The loop: keycards spawn around the map each round (higher tiers inside higher-tier rooms).
 -- A keycard of tier N cracks safes of tier N and opens doors up to tier N.

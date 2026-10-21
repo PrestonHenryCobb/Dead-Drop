@@ -1,5 +1,5 @@
 --!strict
--- OWNER: Dev 1. The round loop and objectives.
+-- The round loop and objectives.
 --
 -- Lobby -> Insertion -> Infiltration -> Extraction -> PostRound -> Lobby
 --
@@ -230,7 +230,7 @@ local function insertPlayer(player: Player, insertionPoints: { BasePart })
 		humanoid.MaxHealth = classDef.MaxHealth
 		humanoid.Health = classDef.MaxHealth
 	end
-	-- TODO(Dev 2): give the class's weapon and gadget Tools here.
+	-- TODO: give the class's weapon and gadget Tools here.
 
 	if #insertionPoints > 0 then
 		local point = insertionPoints[math.random(1, #insertionPoints)]

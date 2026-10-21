@@ -103,7 +103,7 @@ Defined in `src/shared/Config/Upgrades.luau` and `Clearance.luau`.
   you can't disguise, and everyone sees your position every 5 seconds.
 - Reach any `ExtractionPoint` and hold the prompt (2s) to win.
 
-## Map layout guidance (Dev 3)
+## Map layout guidance
 
 - One building, three or four floors or wings, each floor about one tier deeper.
 - At least 8 `IntelTerminal`s for 8 players. Spread them across tiers so intel pulls agents deeper.

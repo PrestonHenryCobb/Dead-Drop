@@ -1,5 +1,5 @@
 --!strict
--- CollectionService tags that Dev 3 puts on parts/models in Studio and Dev 1's services look for.
+-- CollectionService tags you put on parts/models in Studio. The server services look for them.
 -- Use the Tag Editor in Studio (View > Tags). Each tag lists the attributes it expects.
 
 return {

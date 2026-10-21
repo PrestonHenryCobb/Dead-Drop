@@ -1,5 +1,5 @@
 --!strict
--- OWNER: Dev 3. The crowd.
+-- The crowd.
 --
 -- Every model tagged CrowdNPC wanders between WanderNode parts of its own Tier, pauses, and repeats.
 -- NPCs walk at exactly the disguised player walk speed so a disguised agent moving normally is
@@ -90,7 +90,7 @@ local function runNpc(npc: Instance)
 			local offset = Vector3.new(math.random(-3, 3), 0, math.random(-3, 3))
 			walkTo(humanoid, root, node.Position + offset)
 		end
-		-- TODO(Dev 3): play an idle animation here (phone, coffee, look around).
+		-- TODO: play an idle animation here (phone, coffee, look around).
 		task.wait(IDLE_MIN + math.random() * (IDLE_MAX - IDLE_MIN))
 	end
 end
