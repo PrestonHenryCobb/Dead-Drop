@@ -36,4 +36,5 @@ A solo project. **Status:** playable skeleton. The full round loop runs end to e
 - [Contracts](docs/CONTRACTS.md): remotes, tags and attributes that connect the code to the map
 - [Git Workflow](docs/GIT_WORKFLOW.md): branches, PRs, daily routine
 - [Roadmap](docs/ROADMAP.md): solo build order with milestones
+- [Greybox builder](tools/BuildGreybox.luau): paste into Studio's Command Bar to build the test map
 - [Claude Code Guide](docs/CLAUDE_CODE.md): how to use Claude Code on this repo

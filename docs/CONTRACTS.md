@@ -68,13 +68,26 @@ Add tags in Studio with **View → Tags**. Set attributes in the Properties pane
 The lobby is just a normal `SpawnLocation` placed in the lobby room. Dead players and post-round
 respawns land there automatically.
 
-## Day-one greybox test map (~1 hour)
+## Day-one greybox test map
 
-1. Baseplate. A `SpawnLocation` in a walled lobby room off to one side.
-2. Three `InsertionPoint`s in the main hall, plus 5 `CrowdNPC`s (`Tier 0`) and 4 `WanderNode`s (`Tier 0`).
+**Fast way:** run `tools/BuildGreybox.luau` (see the comment at the top of that file). It builds everything below
+into `Workspace.Greybox`, already tagged. Re-running it rebuilds from scratch, so move anything you want to keep
+out of that folder first.
+
+**By hand** (or to understand what the script makes):
+
+1. Baseplate. A `SpawnLocation` in a sealed lobby room off to one side. Disable any other spawns.
+2. Three `InsertionPoint`s in the main hall, plus 5 `CrowdNPC`s (`Tier 0`) and 4–5 `WanderNode`s (`Tier 0`).
 3. A side room covered by a `ClearanceZone` (`RequiredTier 1`) behind a `ClearanceDoor` (`RequiredTier 1`).
    Inside: 2 `CrowdNPC` + 2 `WanderNode` at `Tier 1`, a `Safe` (`Tier 1`), a `KeycardSpawn` (`Tier 2`).
 4. A `KeycardSpawn` (`Tier 1`) in the main hall.
-5. Three `IntelTerminal`s, one `Vault`, one `ExtractionPoint`.
-6. Set `MinPlayers = 1` in `GameConfig` locally (don't commit it), press Play, and run a full round solo.
-   Use **Test → Clients and Servers → 2 players** to test with a second player.
+5. Three `IntelTerminal`s (one in the side room), one `Vault`, one `ExtractionPoint`.
+
+**Then test it:**
+
+1. In `src/shared/Config/GameConfig.luau` set `MinPlayers = 1` (don't commit that).
+2. `rojo serve`, connect, press **Play**. Pick a class, click Ready, and wait out the 20s countdown.
+3. Walk through a round: grab the Staff keycard → open the door → copy a Staff disguise → crack the safe
+   → hack all 3 terminals → open the vault → extract.
+4. For 2 players: **Test → Clients and Servers → 2 Players → Start**, and set `MinPlayers` back to 2.
+5. Errors show up in **View → Output**. Paste them into Claude Code.
