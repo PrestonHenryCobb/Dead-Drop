@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ok-nick/setup-aftman@v0.4.2
+      - name: Check formatting
+        run: stylua --check src
+      - name: Lint
+        run: selene src
+      - name: Build place file
+        run: rojo build default.project.json --output build.rbxl
