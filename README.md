@@ -1,4 +1,4 @@
-# Social Stealth (working title)
+# Dead Drop
 
 A Roblox social-stealth game inspired by Deceive Inc. Agents blend into a crowd by copying NPC disguises,
 hack terminals for intel, climb a clearance ladder with keycards and safes, then fight to extract the package.
