@@ -7,12 +7,17 @@ A solo project. **Status:** playable skeleton. The full round loop runs end to e
 
 ## Setup
 
-1. Install [Aftman](https://github.com/LPGhatguy/aftman), then from this folder run:
+1. Install [Rokit](https://github.com/rojo-rbx/rokit). On Windows, in PowerShell:
    ```
-   aftman install
+   Invoke-RestMethod https://raw.githubusercontent.com/rojo-rbx/rokit/main/scripts/install.ps1 | Invoke-Expression
    ```
-   This installs the pinned versions of Rojo, Selene (linter) and StyLua (formatter).
-2. Install the **Rojo** plugin in Roblox Studio (Plugins tab → Manage Plugins, or from the Rojo docs).
+   Open a new terminal, then from this folder run:
+   ```
+   rokit install
+   ```
+   This installs the pinned versions of Rojo, Selene (linter) and StyLua (formatter) from `aftman.toml`.
+   (Rokit reads Aftman's file format; Aftman itself is no longer maintained.)
+2. Install the **Rojo** plugin in Studio: run `rojo plugin install`, then restart Studio.
 3. Open VS Code here and install the recommended extensions when prompted.
 4. Run `rojo serve`, open your place in Studio, and click **Connect** in the Rojo plugin.
    Code in `src/` now syncs live into Studio.

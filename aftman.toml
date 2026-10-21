@@ -1,4 +1,4 @@
-# Pinned tool versions. Run `aftman install` once after cloning.
+# Pinned tool versions. Run `rokit install` once after cloning (Rokit reads this file).
 [tools]
 rojo = "rojo-rbx/rojo@7.4.4"
 selene = "Kampfkarren/selene@0.27.1"
